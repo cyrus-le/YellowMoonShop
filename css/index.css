@@ -1,0 +1,55 @@
+body {font-family: "Lato", sans-serif;}
+div.scrollmenu {
+    background-color: #DEB887;
+    overflow: auto;
+    white-space: nowrap;
+}
+div.scrollmenu a {
+    background-color: #DEB887;
+    color: black;
+    text-align: center;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    padding: 14px 0px;
+    font-size: 17px;
+    display: inline-block;
+    width: 24.8%;
+}
+
+div.scrollmenu a:hover {
+    background-color: #a27644;
+}
+div.scrollmenu a.active {
+    background-color :#8B4513;
+    color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+    color: #8B4513;
+    display: none;
+    padding: 40px;
+    text-align: center;
+    background-color: #FAEBD7
+}
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color :#8B4513;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #DEB887;
+}
+
