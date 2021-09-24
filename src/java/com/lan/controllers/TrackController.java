@@ -24,17 +24,8 @@ import org.apache.log4j.Logger;
  */
 public class TrackController extends HttpServlet {
 
-    final static Logger LOGGER = Logger.getLogger(TrackController.class);
+    private final static Logger LOGGER = Logger.getLogger(TrackController.class);
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     private static final String SUCCESS = "track.jsp";
     private static final String ERROR = "invalid.jsp";
 
@@ -52,7 +43,7 @@ public class TrackController extends HttpServlet {
             }
             url = SUCCESS;
         } catch (SQLException | NamingException e) {
-            LOGGER.error(e);
+            LOGGER.error("Error TrackController at " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

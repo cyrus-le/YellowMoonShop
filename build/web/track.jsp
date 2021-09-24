@@ -19,7 +19,7 @@
     <body class="bg-light">
         <div class="container">
             <a class="btn btn-outline-secondary"
-                href="searchProduct?txtSearch=${param.txtSearch}&page=${param.page}&categoryID=${param.categoryID}"><i class="fa fa-backspace"></i> Back</a>
+               href="searchProduct?txtSearch=${param.txtSearch}&page=${param.page}&categoryID=${param.categoryID}"><i class="fa fa-backspace"></i> Back</a>
             <form action="track">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">
@@ -47,32 +47,45 @@
                 </p>                         
                 <p class="font-weight-bold">Danh sách đơn hàng: </p>
                 <hr/>
-                <c:forEach var="dto" items="${order.getProducts()}">
-                    <table class="table table-bordered table-striped" border="1">
-                        <thead class="thead-dark text-center">
+
+                <table class="table table-bordered table-striped" border="1">
+                    <thead class="thead-dark text-center">
+                        <tr>
+                            <th>#NO</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Ảnh</th>             
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="dto" items="${order.getProducts()}" varStatus="counter">
                             <tr>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Current status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
+                                <td>
+                                    ${counter.count}
+                                </td>
                                 <td>${dto.getProductID()}</td>
+                                <td>
+                                    <img src="${dto.getImage()}" width="150" height="150"/>
+                                </td>
+
                                 <td>${dto.getName()}</td>
                                 <td>${dto.getPrice()}</td>
                                 <td>${dto.getQuantity()}</td>
-                                <td>${dto.isStatus()}</td>
-                            </tr>
-                        </tbody>
-                    </table>
 
-                </c:forEach>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+
+
                 <hr/>
                 <p><span class="font-weight-bold" >Phương thức thanh toán: </span>${order.getPaymentName()}</p>    
-                <p><span class="font-weight-bold" >Trạng thái thanh toán: </span>${order.isPaymentStatus()}</p>    
+                <p><span class="font-weight-bold" >Trạng thái thanh toán: </span>                
+                    <c:if test="${order.isPaymentStatus()==true}"><span class="text-success">Thành công</span></c:if>
+                    <c:if test="${order.isPaymentStatus()==false}"><span class="text-danger"> Không thành công</span></c:if>
+                    </p>    
             </c:if>
             <c:if test="${requestScope.ORDER_DETAIL==null}">
                 <h2>Không tìm thây đơn hàng nào</h2>

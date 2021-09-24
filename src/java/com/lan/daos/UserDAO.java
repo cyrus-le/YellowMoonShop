@@ -118,7 +118,7 @@ public class UserDAO {
                 + "FULL OUTER JOIN categories ON categories.categoryID = products.categoryID "
                 + "WHERE (products.name like '%" + search + "%' OR categories.category like '%" + search + "%') "
                 + "AND (products.status = 1 AND products.quantity >= 1 "
-                + (!categoryID.equals("") ? ("AND products.categoryID = '" + categoryID + "') ") : ") ");                 
+                + (!categoryID.equals("") ? ("AND products.categoryID = '" + categoryID + "') ") : ") ");
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
@@ -411,24 +411,26 @@ public class UserDAO {
     }
 
     public List<ProductDTO> getOrderProductList(String orderID) throws SQLException, NamingException {
-        List<ProductDTO> list = new ArrayList<>();
-
+        List<ProductDTO> list = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "SELECT p.productID, p.name, o.price, o.quantity, p.status "
+                String sql = "SELECT p.productID, p.name, p.image, o.price, o.quantity, p.status "
                         + "FROM products p, orderDetails o "
                         + "WHERE o.orderID=? AND o.productID=p.productID ";
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, orderID);
                 rs = stm.executeQuery();
+                list = new ArrayList<>();
                 while (rs.next()) {
                     String productID = rs.getString("productID");
                     String name = rs.getString("name");
                     int price = rs.getInt("price");
                     int quantity = rs.getInt("quantity");
                     boolean status = rs.getBoolean("status");
-                    list.add(new ProductDTO(productID, name, null, null, price, quantity, null, null, null, status));
+                    String image = rs.getString("image");
+
+                    list.add(new ProductDTO(productID, name, image, null, price, quantity, null, null, null, status));
                 }
             }
         } finally {
