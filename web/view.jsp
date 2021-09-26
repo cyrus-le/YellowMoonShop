@@ -80,9 +80,9 @@
                                                 <c:param name="page" value="${param.page}"></c:param>
                                                 <c:param name="categoryID" value="${param.categoryID}"></c:param>
                                             </c:url>
-                                            <a class="btn btn-danger" onclick="return confirm('Are you sure that you want to cancel this product?');" href="${delete}">
+<!--                                            <a class="btn btn-danger" onclick="return confirm('Are you sure that you want to cancel this product?');" href="${delete}">
                                                 <i class="fa fa-trash"></i> Delete
-                                            </a>
+                                            </a>-->
                                             <a class="btn btn-danger" onclick="
                                                     event.preventDefault();
                                                     Swal.fire({
