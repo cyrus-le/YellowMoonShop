@@ -38,7 +38,7 @@ public class CreateController extends HttpServlet {
     private static final String ERROR = "create.jsp";
     private static final long serialVersionUID = 1L;
 
-    public static final String SAVE_DIRECTORY = "images";
+    public static final String SAVE_DIRECTORY = "img";
     private static final ProductErrorObj errorObj = new ProductErrorObj();
 
     /**
@@ -115,7 +115,7 @@ public class CreateController extends HttpServlet {
                 String expirationDate = request.getParameter("txtExpirationDate");
                 boolean status = Boolean.valueOf(request.getParameter("cbStatus"));
                 SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-                ProductDTO dto = new ProductDTO(productID, name, "images/" + fileName, description, price, quantity,
+                ProductDTO dto = new ProductDTO(productID, name, "img/" + fileName, description, price, quantity,
                         fm.parse(createDate), fm.parse(expirationDate), new CategoryDTO(categoryID, null, null), status);
                 if (dao.insertProduct(dto)) {
                     url = SUCCESS;

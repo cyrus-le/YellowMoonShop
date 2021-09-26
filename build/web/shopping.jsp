@@ -13,8 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>  
-        <link rel="stylesheet" href="./css/sweetalert2.min.css">      
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>     
         <title>Shopping Page</title>
         <style>
             body {
@@ -207,7 +206,13 @@
                                     <input type="hidden" name="txtCategoryID" value="${dto.getCategory().getCategoryID()}"/>
                                     <input type="hidden" name="txtCategory" value="${dto.getCategory().getCategory()}"/>
                                     <input type="hidden" value="${dto.getQuantity()}" name="txtQuantity" />
-                                    <button class="btn btn-info" type="submit" name="btnAction"><i class="fa fa-plus-circle"></i> Thêm</button>
+                                    <button onclick="
+                                        
+                                        Swal.fire(
+                                                    'Add succesffuly!',
+                                                    '${requestScope.ADD_MESS}',
+                                                    'success'
+                                                    )" class="btn btn-info" type="submit" name="btnAction"><i class="fa fa-plus-circle"></i> Thêm</button>
                                 </form>
                             </td>
                         </tr>
@@ -250,14 +255,23 @@
             </div>
         </c:if>
 
+
+        <!--        <script>
         <c:if test="${not empty requestScope.ADD_MESS}">
-            <script>
-                alert("${requestScope.ADD_MESS}");
-            </script>
+            function callSweetMsg(event) {
+                event.preventDefault();
+                Swal.fire(
+                        'Add succesffuly!',
+                        '${requestScope.ADD_MESS}',
+                        'success'
+                        )
+            }
         </c:if>
+    </script>-->
 
 
-        <script src="./js/sweetalert2.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

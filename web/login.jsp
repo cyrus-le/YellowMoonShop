@@ -16,7 +16,7 @@
     <body>
         <div class="container">
             <h1>LOGIN PAGE</h1>
-            <img src="./images/1603112561913.jpg" class="rounded-circle mx-auto" alt="alt"/>
+            <img src="./img/1603112561913.jpg" class="rounded-circle mx-auto" alt="alt"/>
             <form action="login" method="POST">
                 <div class="form-group">
                     <label for="userID">UserID: </label>

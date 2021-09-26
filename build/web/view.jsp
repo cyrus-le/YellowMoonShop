@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Cart Page</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     </head>
     <body class="bg-light">
@@ -79,7 +80,9 @@
                                                 <c:param name="page" value="${param.page}"></c:param>
                                                 <c:param name="categoryID" value="${param.categoryID}"></c:param>
                                             </c:url>
-                                            <a class="btn btn-danger" onclick="return confirm('Are you sure that you want to cancel this product?');" href="${delete}">Delete</a>
+                                            <a class="btn btn-danger" onclick="return confirm('Are you sure that you want to cancel this product?');" href="${delete}">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 </form>
