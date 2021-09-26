@@ -83,6 +83,34 @@
                                             <a class="btn btn-danger" onclick="return confirm('Are you sure that you want to cancel this product?');" href="${delete}">
                                                 <i class="fa fa-trash"></i> Delete
                                             </a>
+                                            <a class="btn btn-danger" onclick="
+                                                    event.preventDefault();
+                                                    Swal.fire({
+                                                        title: 'Bạn có muốn xóa sản phẩm này ra khỏi giỏ hàng?',
+                                                        text: 'Bạn sẽ không khôi phục hàng động này!',
+                                                        icon: 'warning',
+                                                        showCancelButton: true,
+                                                        confirmButtonColor: '#d33',
+                                                        cancelButtonColor: '#3085d6 ',
+                                                        confirmButtonText: 'Vâng, đồng ý!'
+                                                    }).then((result) => {
+                                                        if (result.isConfirmed) {
+                                                            event.preventDefault();
+                                                            Swal.fire(
+                                                                    'Đã xóa!',
+                                                                    '${dto.getName()} đã bị xóa.',
+                                                                    'success'
+                                                                    ).then(result => {
+                                                                if (result.isConfirmed) {
+                                                                    window.location.href = '${delete}';
+                                                                }
+                                                            })
+                                                        }
+                                                    }
+                                                    )
+                                               ">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 </form>
@@ -114,7 +142,7 @@
                 </c:if>
             </c:if>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.all.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -195,7 +195,7 @@
                                                 value = "${pageScope.expDate}" />
                             </td>
                             <td>
-                                <form action="addToCart">
+                                <form name="${dto.getProductID()}" action="addToCart">
                                     <input type="hidden" name="txtSearch" value="${param.txtSearch}"/>
                                     <input type="hidden" name="page" value="${requestScope.CUR_PAGE}"/>
                                     <input type="hidden" name="categoryID" value="${param.categoryID}"/>
@@ -206,13 +206,21 @@
                                     <input type="hidden" name="txtCategoryID" value="${dto.getCategory().getCategoryID()}"/>
                                     <input type="hidden" name="txtCategory" value="${dto.getCategory().getCategory()}"/>
                                     <input type="hidden" value="${dto.getQuantity()}" name="txtQuantity" />
+
+
                                     <button onclick="
-                                        
-                                        Swal.fire(
+
+                                            var form = document.forms['${dto.getProductID()}'];
+                                            event.preventDefault();
+                                            Swal.fire(
                                                     'Add succesffuly!',
                                                     '${requestScope.ADD_MESS}',
                                                     'success'
-                                                    )" class="btn btn-info" type="submit" name="btnAction"><i class="fa fa-plus-circle"></i> Thêm</button>
+                                                    ).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    form.submit();
+                                                }
+                                            })" class="btn btn-info" type="submit" name="btnAction"><i class="fa fa-plus-circle"></i> Thêm</button>
                                 </form>
                             </td>
                         </tr>
@@ -256,18 +264,6 @@
         </c:if>
 
 
-        <!--        <script>
-        <c:if test="${not empty requestScope.ADD_MESS}">
-            function callSweetMsg(event) {
-                event.preventDefault();
-                Swal.fire(
-                        'Add succesffuly!',
-                        '${requestScope.ADD_MESS}',
-                        'success'
-                        )
-            }
-        </c:if>
-    </script>-->
 
 
 
