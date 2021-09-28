@@ -118,8 +118,6 @@
                             </tbody>
                         </table>
                         <h1>Total: ${pageScope.total}</h1>
-
-
                     </c:if>
                     <c:if test="${empty sessionScope.CART.getCart()}">
                         <h2>Your cart is empty!</h2>

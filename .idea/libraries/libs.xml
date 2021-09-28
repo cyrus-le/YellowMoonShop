@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/rest-api-sdk-1.14.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/httpclient-4.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-email-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/fluent-hc-4.5.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/gson-2.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jstl-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/commons-io-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/httpcore-4.4.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/jstl-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/mssql-jdbc-8.4.0.jre8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
