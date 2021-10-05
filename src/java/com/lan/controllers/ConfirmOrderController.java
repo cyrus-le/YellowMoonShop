@@ -29,7 +29,6 @@ public class ConfirmOrderController extends HttpServlet {
     private static final InfoErrorObj errorObj = new InfoErrorObj();
     private static final String ERROR = "OrderProductController";
     private static final String SUCCESS = "SearchProductController";
-    private static final String PAY_PAL = "PaypalController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,7 +42,7 @@ public class ConfirmOrderController extends HttpServlet {
                 request.setAttribute("EMPTY_CART", "Your cart is empty");
             } else {
                 UserDAO dao = new UserDAO();
-
+                
                 UserDTO user = (UserDTO) ses.getAttribute("USER");
                 String address = request.getParameter("txtAddress");
                 String phone = request.getParameter("txtPhone");
@@ -58,37 +57,23 @@ public class ConfirmOrderController extends HttpServlet {
 
                 String paymentID = request.getParameter("cbPayment");
                 if (check) {
-
                     url = SUCCESS;
                     String orderID = "";
-
                     if (user != null) {
-                        if (paymentID.equals("PP")) {
-                            url = PAY_PAL;
+                        orderID = dao.confirm(user.getUserID(), name, address, phone, totalPrice, paymentID, cart, true);
+                        if (orderID != null) {
+                            request.setAttribute("CONFIRM_MESS", "Checkout successfully");
+                            ses.setAttribute("CART", null);
                         } else {
-                            orderID = dao.confirm(user.getUserID(), name, address, phone, totalPrice, paymentID, cart, true);
-                            if (orderID != null) {
-                                request.setAttribute("CONFIRM_MESS", "Checkout successfully");
-                                ses.setAttribute("CART", null);
-                            } else {
-                                request.setAttribute("CONFIRM_MESS", "Checkout fail, please try again!");
-                            }
+                            request.setAttribute("CONFIRM_MESS", "Checkout fail, please try again!");
                         }
-
                     } else {
-                        if (paymentID.equals("PP")) {
-                            url = PAY_PAL;
-                            request.setAttribute("USER_NAME", name);
-                            request.setAttribute("USER_PHONE", phone);
-                            request.setAttribute("USER_ADDRESS", address);
+                        orderID = dao.confirm(null, name, address, phone, totalPrice, paymentID, cart, true);
+                        if (orderID != null) {
+                            request.setAttribute("CONFIRM_MESS", "Checkout successfully");
+                            ses.setAttribute("CART", null);
                         } else {
-                            orderID = dao.confirm(null, name, address, phone, totalPrice, paymentID, cart, true);
-                            if (orderID != null) {
-                                request.setAttribute("CONFIRM_MESS", "Checkout successfully");
-                                ses.setAttribute("CART", null);
-                            } else {
-                                request.setAttribute("CONFIRM_MESS", "Checkout fail, please try again!");
-                            }
+                            request.setAttribute("CONFIRM_MESS", "Checkout fail, please try again!");
                         }
                     }
 
@@ -99,7 +84,7 @@ public class ConfirmOrderController extends HttpServlet {
 
             }
         } catch (NumberFormatException | SQLException e) {
-            LOGGER.error(e);
+            LOGGER.error("Errror ConfirmOrderController at: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

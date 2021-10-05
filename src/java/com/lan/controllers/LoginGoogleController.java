@@ -43,7 +43,6 @@ public class LoginGoogleController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        System.out.println("voooooooooooooooooooooo");
         try {
               
             String code = request.getParameter("code");

@@ -342,6 +342,7 @@ public class UserDAO {
     public String insertOrder(String userID, String name, String address, String phone, double totalPrice, String paymentID, boolean paymentStatus, Connection conn) throws SQLException, NamingException, NoSuchAlgorithmException {
         String orderID = null;
         try {
+            conn = DBUtils.getConnection();
             String sql = "INSERT INTO orders(userID, orderDate, shippingAddress, totalPrice, paymentID, phone, orderID, name, paymentStatus) VALUES(?,?,?,?,?,?,?,?,?)";
             stm = conn.prepareStatement(sql);
             stm.setString(1, userID);
@@ -362,35 +363,43 @@ public class UserDAO {
     }
 
     public void updateProduct(ProductDTO dto, Connection conn) throws SQLException, ClassNotFoundException, NamingException {
+        PreparedStatement stm = null;
         try {
-            String sql = "UPDATE products SET quantity=? WHERE productID=?";
-            stm = conn.prepareStatement(sql);
-            int quantity = getQuantity(dto.getProductID());
-            stm.setInt(1, quantity - dto.getQuantity());
-            stm.setString(2, dto.getProductID());
-            stm.executeUpdate();
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "UPDATE products SET quantity=? WHERE productID=?";
+                stm = conn.prepareStatement(sql);
+                int quantity = getQuantity(dto.getProductID());
+                System.out.println(dto.getQuantity());
+                stm.setInt(1, quantity - dto.getQuantity());
+                stm.setString(2, dto.getProductID());
+                stm.executeUpdate();
+            }
+
         } finally {
-            closeConnection();
+            stm.close();
         }
     }
 
-    public void insertOrderDetail(String orderID, ProductDTO dto, Connection conn) throws ClassNotFoundException, SQLException {
-
+    public void insertOrderDetail(String orderID, ProductDTO dto, Connection conn) throws ClassNotFoundException, SQLException, NamingException {
+         PreparedStatement stm = null;
         try {
-            String sql = "INSERT INTO OrderDetails(orderID,productID,quantity,price) VALUES(?,?,?,?)";
-            stm = conn.prepareStatement(sql);
-            stm.setString(1, orderID);
-            stm.setString(2, dto.getProductID());
-            stm.setInt(3, dto.getQuantity());
-            stm.setDouble(4, dto.getPrice());
-            stm.executeUpdate();
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "INSERT INTO OrderDetails(orderID,productID,quantity,price) VALUES(?,?,?,?)";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, orderID);
+                stm.setString(2, dto.getProductID());
+                stm.setInt(3, dto.getQuantity());
+                stm.setDouble(4, dto.getPrice());
+                stm.executeUpdate();
+            }
         } finally {
-            closeConnection();
+            stm.close();
         }
     }
 
     public String confirm(String userID, String name, String address, String phone, double totalPrice, String paymentID, CartDTO cart, boolean paymentStatus) throws SQLException {
-
         try {
             conn = DBUtils.getConnection();
             conn.setAutoCommit(false);

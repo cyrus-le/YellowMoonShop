@@ -20,16 +20,16 @@
             <h1 class="text-center">Thông tin người nhận:</h1>
             <form method="POST" action="confirmOrder">
                 <c:set var="user" value="${sessionScope.USER}" />
-      
+
                 <div class="form-group">
                     <label>ĐTDĐ: </label>
-                    
+
                     <input class="form-control"  type="text" name="txtPhone" value="${requestScope.PHONE}" <c:if
                                test="${not empty user}">readonly</c:if>/>
                     <font color="red">${requestScope.ERROR.phoneError}</font>
                 </div>
                 <div class="form-group">
-    
+
                     <label>Địa chỉ: </label>
 
                     <input class="form-control" type="text" name="txtAddress" value="${requestScope.ADDRESS}" <c:if
@@ -39,11 +39,11 @@
                 <div class="form-group">
                     <label>Tên: </label>
                     <input class="form-control"  type="text" name="txtName" value="${sessionScope.USER.getFullName()}" <c:if
-                                test="${not empty user}">readonly</c:if>/>
+                               test="${not empty user}">readonly</c:if>/>
                     <font color="red">${requestScope.ERROR.nameError}</font> 
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="txtTotal" value="${total}" />
+
                     <label>Phương thức thanh toán: </label>                 
                     <select class="form-control" name="cbPayment">
                         <c:forEach var="dto" items="${requestScope.PAYMENTS}">
@@ -52,27 +52,29 @@
                     </select>
                 </div>
                 <div class="form-group ">
-                    <c:set var="total" value="${requestScope.TOTAL}" />                  
+                    <c:set var="total" value="${requestScope.TOTAL}" />       
+                    <input type="hidden" name="txtTotal" value="${total}" />
                     <input type="hidden" name="txtSearch" value="${param.txtSearch}" />
                     <input type="hidden" name="page" value="${param.page}" />
                     <input type="hidden" name="categoryID" value="${param.categoryID}" />
                     <h3>Total Price: ${total}</h3>
                     <input class="btn btn-warning form-control" type="submit" name="btnAction" value="Confirm" />
                 </div>
+            </form>
         </div>
-    </form>
-</div>
+
+    </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

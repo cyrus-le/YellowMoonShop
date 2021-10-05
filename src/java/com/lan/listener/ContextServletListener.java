@@ -37,7 +37,7 @@ public class ContextServletListener implements ServletContextListener {
         // create file appender
         FileAppender fileAppender = new FileAppender();
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-        fileAppender.setFile("E:/Semester 5/LAB231 - Web Java Lab/Lab01_SE140961_LeNhatHanhLan/Yellow_Moon_Shop_log__" + timeStamp + ".log");
+        fileAppender.setFile("E:/Semester 5/LAB231 - Web Java Lab/Lab01_SE140961_LeNhatHanhLan/logs/Yellow_Moon_Shop_log__" + timeStamp + ".log");
         fileAppender.setLayout(layout);
         fileAppender.activateOptions();
         

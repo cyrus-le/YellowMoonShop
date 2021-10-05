@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.lan.dtos.InfoErrorObj;
 import javax.naming.NamingException;
 import org.apache.log4j.Logger;
 
