@@ -1,7 +1,7 @@
 <%-- 
     Document   : view.jsp
     Created on : Oct 14, 2020, 11:12:22 AM
-    Author     : Admin
+    Author     : Cyrus
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -91,7 +91,7 @@
                                                         icon: 'warning',
                                                         showCancelButton: true,
                                                         confirmButtonColor: '#d33',
-                                                        cancelButtonColor: '#3085d6 ',
+                                                        cancelButtonColor: '#707881',
                                                         confirmButtonText: 'Vâng, đồng ý!'
                                                     }).then((result) => {
                                                         if (result.isConfirmed) {

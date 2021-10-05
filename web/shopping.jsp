@@ -1,7 +1,7 @@
 <%-- 
     Document   : shopping.jsp
     Created on : Oct 6, 2020, 10:26:37 PM
-    Author     : Admin
+    Author     : Cyrus
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

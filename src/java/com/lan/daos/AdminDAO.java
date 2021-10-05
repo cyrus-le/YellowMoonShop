@@ -20,7 +20,7 @@ import com.lan.utils.DBUtils;
 
 /**
  *
- * @author Admin
+ * @author Cyrus
  */
 public class AdminDAO {
 

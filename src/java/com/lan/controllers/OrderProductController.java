@@ -52,10 +52,9 @@ public class OrderProductController extends HttpServlet {
             if (total != null) {
                 request.setAttribute("TOTAL", total);
             }
-
             url = SUCCESS;
         } catch (SQLException | NamingException e) {
-            LOGGER.error("Error OrderProductController at: "+e.getMessage());
+            LOGGER.error("Error OrderProductController at: " + e.getMessage());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
