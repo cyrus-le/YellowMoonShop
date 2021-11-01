@@ -1,4 +1,4 @@
-# YellowMoonShop
+# Yellow Moon Shop
 
 *Yellow Moon shop is an online shop selling moon cakes.. This project use Servlet as Controller and follow MVC2 model.*
 ## Functions on this project 
