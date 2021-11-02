@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context path="/YellowMoonShop">
-  <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" name="DBUtils" password="123123" type="javax.sql.DataSource" url="jdbc:sqlserver://127.0.0.1:1433;databaseName=YellowMoonShop" username="sa">
-    </Resource>
-</Context>
